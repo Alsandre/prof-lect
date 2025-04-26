@@ -1,8 +1,37 @@
 .session-header {
-    background-color: var(--secondary-color);
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
     color: white;
-    padding: 2rem;
+    padding: 3rem 2rem;
     text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.session-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('../images/pattern.svg') repeat;
+    opacity: 0.1;
+    z-index: 0;
+}
+
+.session-header h1 {
+    position: relative;
+    z-index: 1;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.session-header p {
+    position: relative;
+    z-index: 1;
+    font-size: 1.2rem;
+    opacity: 0.9;
 }
 
 .session-nav {
@@ -11,6 +40,7 @@
     background-color: white;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     z-index: 100;
+    border-bottom: 1px solid var(--border-color);
 }
 
 .session-nav ul {
@@ -20,23 +50,44 @@
     padding: 1rem;
     gap: 2rem;
     margin: 0;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .session-nav a {
     color: var(--secondary-color);
     text-decoration: none;
     font-weight: 600;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
 }
 
 .session-nav a:hover {
     color: var(--primary-color);
+    background-color: var(--light-bg);
 }
 
 .session-main {
     max-width: 1200px;
     margin: 0 auto;
     padding: 2rem;
+}
+
+/* Section Styles */
+.section {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
+    padding: 2rem;
+}
+
+.section h2 {
+    color: var(--secondary-color);
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--light-bg);
 }
 
 /* Quiz Styles */
@@ -50,6 +101,12 @@
     padding: 1.5rem;
     background-color: var(--light-bg);
     border-radius: 8px;
+    border-left: 4px solid var(--primary-color);
+}
+
+.quiz-question h3 {
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
 }
 
 .quiz-options {
@@ -64,6 +121,13 @@
     align-items: center;
     gap: 0.5rem;
     cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.quiz-options label:hover {
+    background-color: rgba(0,0,0,0.05);
 }
 
 /* Task Styles */
@@ -80,6 +144,11 @@
     background-color: white;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     border-left: 4px solid;
+    transition: transform 0.3s ease;
+}
+
+.task-card:hover {
+    transform: translateY(-5px);
 }
 
 .task-card.difficulty-easy {
@@ -100,6 +169,8 @@
     border-radius: 4px;
     margin: 1rem 0;
     overflow-x: auto;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9rem;
 }
 
 .task-code pre {
@@ -120,11 +191,12 @@
     border-radius: 4px;
     cursor: pointer;
     font-weight: 600;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .btn:hover {
     background-color: var(--secondary-color);
+    transform: translateY(-2px);
 }
 
 /* Responsive Design */
@@ -137,5 +209,9 @@
 
     .tasks-container {
         grid-template-columns: 1fr;
+    }
+
+    .session-main {
+        padding: 1rem;
     }
 } 

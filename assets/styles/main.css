@@ -7,6 +7,7 @@
     --success-color: #4caf50;
     --warning-color: #ff9800;
     --danger-color: #f44336;
+    --landing-bg: #f5f7fa;
 }
 
 * {
@@ -19,25 +20,35 @@ body {
     font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     line-height: 1.6;
     color: var(--text-color);
-    background-color: var(--light-bg);
+    background-color: var(--landing-bg);
 }
 
 .main-header {
-    background-color: var(--secondary-color);
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
     color: white;
-    padding: 2rem 0;
+    padding: 4rem 0;
     text-align: center;
+    margin-bottom: 2rem;
 }
 
 .main-header h1 {
-    font-size: 2.5rem;
-    margin-bottom: 0.5rem;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.main-header p {
+    font-size: 1.2rem;
+    opacity: 0.9;
 }
 
 .main-nav {
     background-color: white;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     padding: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 .main-nav ul {
@@ -51,38 +62,81 @@ body {
     color: var(--secondary-color);
     text-decoration: none;
     font-weight: 600;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
 }
 
 .main-nav a:hover {
     color: var(--primary-color);
+    background-color: var(--light-bg);
 }
 
 .section {
     max-width: 1200px;
     margin: 2rem auto;
-    padding: 2rem;
+    padding: 3rem;
     background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.section:hover {
+    transform: translateY(-5px);
 }
 
 .sessions-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.session-card {
+    background-color: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.session-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.session-card h3 {
+    color: var(--secondary-color);
+    margin-bottom: 0.5rem;
+}
+
+.session-card h4 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.session-card .btn {
     margin-top: 1.5rem;
+    width: 100%;
 }
 
 .resources-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
+}
+
+.resource-category {
+    background-color: var(--light-bg);
+    padding: 2rem;
+    border-radius: 12px;
 }
 
 .resource-category h3 {
     color: var(--secondary-color);
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
 }
 
 .resource-category ul {
@@ -90,16 +144,26 @@ body {
 }
 
 .resource-category li {
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.resource-category li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
 }
 
 .resource-category a {
     color: var(--primary-color);
     text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 .resource-category a:hover {
-    text-decoration: underline;
+    color: var(--secondary-color);
 }
 
 .profile-container {
@@ -111,15 +175,52 @@ body {
 .progress-stats {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
+    gap: 1.5rem;
+}
+
+.progress-item {
+    background-color: var(--light-bg);
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.progress-item h4 {
+    color: var(--secondary-color);
+    margin-bottom: 0.5rem;
+}
+
+.progress-item p {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
 }
 
 footer {
     text-align: center;
-    padding: 2rem;
+    padding: 3rem;
     background-color: var(--secondary-color);
     color: white;
-    margin-top: 2rem;
+    margin-top: 4rem;
+}
+
+/* Button Styles */
+.btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-align: center;
+    display: inline-block;
+}
+
+.btn:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
 }
 
 /* Difficulty level colors */
@@ -142,10 +243,23 @@ html {
 
 /* Responsive design */
 @media (max-width: 768px) {
+    .main-header {
+        padding: 3rem 1rem;
+    }
+
+    .main-header h1 {
+        font-size: 2.5rem;
+    }
+
     .main-nav ul {
         flex-direction: column;
         align-items: center;
         gap: 1rem;
+    }
+
+    .section {
+        padding: 2rem;
+        margin: 1rem;
     }
 
     .profile-container {
