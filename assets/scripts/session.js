@@ -61,15 +61,45 @@ function setupTaskSubmissions() {
         const removeBtn = taskCard.querySelector('.btn-remove');
         const statusDiv = taskCard.querySelector('.submission-status');
 
-        // Handle file selection
+        // Function to handle file selection/acceptance
+        function handleFile(file) {
+            selectedFileSpan.textContent = file.name;
+            selectedFileSpan.classList.remove('hidden');
+            fileSelection.classList.add('hidden');
+            submitBtn.classList.remove('hidden');
+            removeBtn.classList.remove('hidden');
+        }
+
+        // Handle file selection via input
         fileInput.addEventListener('change', function() {
             if (this.files.length > 0) {
-                const file = this.files[0];
-                selectedFileSpan.textContent = file.name;
-                selectedFileSpan.classList.remove('hidden');
-                fileSelection.classList.add('hidden');
-                submitBtn.classList.remove('hidden');
-                removeBtn.classList.remove('hidden');
+                handleFile(this.files[0]);
+            }
+        });
+
+        // Handle drag and drop
+        taskCard.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            taskCard.classList.add('drag-over');
+        });
+
+        taskCard.addEventListener('dragleave', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            taskCard.classList.remove('drag-over');
+        });
+
+        taskCard.addEventListener('drop', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            taskCard.classList.remove('drag-over');
+
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                handleFile(files[0]);
+                // Update the file input to match the dropped file
+                fileInput.files = files;
             }
         });
 
@@ -107,7 +137,6 @@ function setupTaskSubmissions() {
                 if (data.success) {
                     statusDiv.textContent = 'Solution submitted successfully!';
                     statusDiv.classList.remove('hidden');
-                    statusDiv.className = 'submission-status success';
                     
                     // Reset the form after successful submission
                     setTimeout(() => {
