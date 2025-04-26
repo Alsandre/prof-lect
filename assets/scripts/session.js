@@ -4,10 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
     setupNavigation();
 });
 
-document.querySelector('.nav-back').addEventListener('click', () => {
-    window.location.href = '../index.html';
-})
-
 // Setup quiz form submission
 function setupQuizForm() {
     const quizForm = document.getElementById('quiz-form');
