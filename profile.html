@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Profile - JavaScript Module</title>
+    <link rel="stylesheet" href="assets/styles/main.css">
+    <link rel="stylesheet" href="assets/styles/profile.css">
+</head>
+<body>
+    <header class="main-header">
+        <h1>Student Profile</h1>
+        <p>Track your progress and achievements</p>
+    </header>
+
+    <nav class="main-nav">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#overview">Overview</a></li>
+            <li><a href="#progress">Progress</a></li>
+            <li><a href="#achievements">Achievements</a></li>
+        </ul>
+    </nav>
+
+    <main class="profile-main">
+        <section id="overview" class="section">
+            <h2>Profile Overview</h2>
+            <div class="profile-info">
+                <div class="profile-header">
+                    <div class="avatar-placeholder">
+                        <span class="initials">JS</span>
+                    </div>
+                    <div class="profile-details">
+                        <h3>John Student</h3>
+                        <p class="email">john.student@example.com</p>
+                        <p class="join-date">Joined: January 2024</p>
+                    </div>
+                </div>
+                <div class="stats-summary">
+                    <div class="stat-item">
+                        <span class="stat-value">15</span>
+                        <span class="stat-label">Sessions Completed</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">85%</span>
+                        <span class="stat-label">Average Score</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">30</span>
+                        <span class="stat-label">Tasks Completed</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="progress" class="section">
+            <h2>Learning Progress</h2>
+            <div class="progress-container">
+                <div class="progress-chart">
+                    <h3>Session Completion</h3>
+                    <div class="chart">
+                        <!-- Chart will be dynamically generated -->
+                        <div class="chart-bar" style="--progress: 80%"></div>
+                        <div class="chart-bar" style="--progress: 60%"></div>
+                        <div class="chart-bar" style="--progress: 90%"></div>
+                        <div class="chart-bar" style="--progress: 75%"></div>
+                        <div class="chart-bar" style="--progress: 85%"></div>
+                    </div>
+                </div>
+                <div class="progress-details">
+                    <h3>Recent Activity</h3>
+                    <ul class="activity-list">
+                        <li>
+                            <span class="activity-date">2024-03-15</span>
+                            <span class="activity-text">Completed Session 5: Browser APIs</span>
+                            <span class="activity-score">Score: 90%</span>
+                        </li>
+                        <li>
+                            <span class="activity-date">2024-03-12</span>
+                            <span class="activity-text">Submitted Strong Task in Session 4</span>
+                            <span class="activity-score">Difficulty: Strong</span>
+                        </li>
+                        <li>
+                            <span class="activity-date">2024-03-10</span>
+                            <span class="activity-text">Completed Session 4: Timers & Animations</span>
+                            <span class="activity-score">Score: 85%</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="achievements" class="section">
+            <h2>Achievements</h2>
+            <div class="achievements-grid">
+                <div class="achievement-card">
+                    <div class="achievement-icon">🏆</div>
+                    <h3>Fast Learner</h3>
+                    <p>Completed 5 sessions in one week</p>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">💪</div>
+                    <h3>Challenge Master</h3>
+                    <p>Completed 3 Strong difficulty tasks</p>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">🎯</div>
+                    <h3>Perfect Score</h3>
+                    <p>Achieved 100% in a quiz</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 JavaScript Module. All rights reserved.</p>
+    </footer>
+
+    <script src="assets/scripts/profile.js"></script>
+</body>
+</html> 

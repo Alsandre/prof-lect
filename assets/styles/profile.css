@@ -1,0 +1,203 @@
+.profile-main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Profile Overview Styles */
+.profile-info {
+    display: grid;
+    gap: 2rem;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem;
+    background-color: var(--light-bg);
+    border-radius: 12px;
+}
+
+.avatar-placeholder {
+    width: 100px;
+    height: 100px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.profile-details h3 {
+    color: var(--secondary-color);
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.profile-details .email {
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+}
+
+.profile-details .join-date {
+    color: var(--text-color);
+    font-size: 0.9rem;
+}
+
+.stats-summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.stat-item {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.stat-value {
+    display: block;
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    color: var(--text-color);
+    font-size: 0.9rem;
+}
+
+/* Progress Chart Styles */
+.progress-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.progress-chart {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.chart {
+    display: flex;
+    gap: 1rem;
+    height: 200px;
+    align-items: flex-end;
+    margin-top: 2rem;
+}
+
+.chart-bar {
+    flex: 1;
+    background-color: var(--primary-color);
+    height: var(--progress);
+    border-radius: 4px 4px 0 0;
+    transition: height 0.3s ease;
+}
+
+.progress-details {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.activity-list {
+    list-style: none;
+    margin-top: 1rem;
+}
+
+.activity-list li {
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-color);
+    display: grid;
+    grid-template-columns: 100px 1fr auto;
+    gap: 1rem;
+    align-items: center;
+}
+
+.activity-list li:last-child {
+    border-bottom: none;
+}
+
+.activity-date {
+    color: var(--text-color);
+    font-size: 0.9rem;
+}
+
+.activity-text {
+    color: var(--secondary-color);
+}
+
+.activity-score {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* Achievements Styles */
+.achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.achievement-card {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.achievement-card:hover {
+    transform: translateY(-5px);
+}
+
+.achievement-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.achievement-card h3 {
+    color: var(--secondary-color);
+    margin-bottom: 0.5rem;
+}
+
+.achievement-card p {
+    color: var(--text-color);
+    font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .profile-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .progress-container {
+        grid-template-columns: 1fr;
+    }
+
+    .activity-list li {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+
+    .activity-date,
+    .activity-score {
+        font-size: 0.8rem;
+    }
+} 
