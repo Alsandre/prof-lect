@@ -14,42 +14,44 @@ function setupQuizForm() {
         e.preventDefault();
         
         // Collect answers
-        const answers = {
-            q1: quizForm.querySelector('input[name="q1"]:checked')?.value,
-            q2: quizForm.querySelector('input[name="q2"]:checked')?.value
-        };
-
-        // WAITING FOR BACK
-        // This will be replaced with actual backend submission
-        console.log('Quiz answers:', answers);
+        const answers = {};
+        const questions = quizForm.querySelectorAll('.quiz-question');
         
+        questions.forEach(question => {
+            const questionId = question.querySelector('h3').textContent.split('.')[0];
+            const selectedOption = question.querySelector('input:checked');
+            answers[questionId] = selectedOption ? selectedOption.value : null;
+        });
+
+        // Calculate score
+        const sessionData = window.sessionData; // This will be set by the renderer
+        let score = 0;
+        let totalQuestions = 0;
+
+        sessionData.quiz.questions.forEach((question, index) => {
+            totalQuestions++;
+            if (answers[`${index + 1}`] === question.correctAnswer) {
+                score++;
+            }
+        });
+
         // Show feedback
-        showQuizFeedback(answers);
+        showQuizFeedback(score, totalQuestions);
     });
 }
 
 // Show quiz feedback
-function showQuizFeedback(answers) {
-    // WAITING FOR BACK
-    // This will be replaced with actual feedback from backend
-    const feedback = {
-        score: 0,
-        correctAnswers: {
-            q1: 'a',
-            q2: 'b'
-        }
-    };
+function showQuizFeedback(score, totalQuestions) {
+    const feedbackDiv = document.createElement('div');
+    feedbackDiv.className = 'quiz-feedback';
+    feedbackDiv.innerHTML = `
+        <h3>Quiz Results</h3>
+        <p>Your score: ${score}/${totalQuestions}</p>
+        <p>Percentage: ${Math.round((score/totalQuestions) * 100)}%</p>
+    `;
 
-    // Calculate score
-    let score = 0;
-    for (const [question, answer] of Object.entries(answers)) {
-        if (answer === feedback.correctAnswers[question]) {
-            score++;
-        }
-    }
-
-    // Show feedback to user
-    alert(`Quiz submitted! Your score: ${score}/${Object.keys(answers).length}`);
+    const quizForm = document.getElementById('quiz-form');
+    quizForm.appendChild(feedbackDiv);
 }
 
 // Setup hints system
@@ -63,7 +65,7 @@ function setupHints() {
                 this.style.opacity = '0.5';
                 this.style.cursor = 'not-allowed';
                 
-                // In the future, this will deduct points from the score
+                // Get the penalty from the button text
                 const penalty = parseInt(this.textContent.match(/\(-(\d+)/)[1]);
                 console.log(`Hint used: -${penalty} points`);
             }

@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Session 1: DOM Selectors & Inspection</title>
+    <title data-session-title>Session Title</title>
     <link rel="stylesheet" href="../assets/styles/main.css">
     <link rel="stylesheet" href="../assets/styles/session.css">
 </head>
 <body>
     <header class="session-header">
-        <h1>DOM Selectors & Inspection</h1>
-        <p>Week 1 - Session 1</p>
+        <h1 data-session-title>Session Title</h1>
+        <p data-session-week>Week X - Session Y</p>
     </header>
 
     <nav class="session-nav">
@@ -26,242 +26,55 @@
 
     <main class="session-main">
         <section id="overview" class="section">
-            <h2>Overview</h2>
-            <p>In this session, we'll explore how to effectively select and inspect elements in the Document Object Model (DOM). You'll learn about different selector methods and their use cases.</p>
+            <h2 data-section-title>Overview</h2>
+            <p data-section-content>Overview content goes here</p>
         </section>
 
         <section id="learning-goals" class="section">
-            <h2>Learning Goals</h2>
-            <ul>
-                <li>Select any element(s) efficiently with native DOM APIs</li>
-                <li>Explain difference between NodeList & HTMLCollection</li>
+            <h2 data-section-title>Learning Goals</h2>
+            <ul data-section-content>
+                <!-- Learning goals will be inserted here -->
             </ul>
         </section>
 
         <section id="quiz" class="section">
-            <h2>Quiz</h2>
+            <h2 data-section-title>Quiz</h2>
             <form id="quiz-form" class="quiz-form">
-                <div class="quiz-grid">
-                    <div class="quiz-question">
-                        <h3>1. Which method is faster: getElementById or querySelector?</h3>
-                        <div class="quiz-options">
-                            <label><input type="radio" name="q1" value="a">getElementById</label>
-                            <label><input type="radio" name="q1" value="b">querySelector</label>
-                            <label><input type="radio" name="q1" value="c">They're equal</label>
-                        </div>
-                    </div>
-
-                    <div class="quiz-question">
-                        <h3>2. What does querySelectorAll return?</h3>
-                        <div class="quiz-options">
-                            <label><input type="radio" name="q2" value="a">HTMLCollection</label>
-                            <label><input type="radio" name="q2" value="b">NodeList</label>
-                            <label><input type="radio" name="q2" value="c">Array</label>
-                        </div>
-                    </div>
-
-                    <div class="quiz-question">
-                        <h3>3. True or False: NodeList is a live collection</h3>
-                        <div class="quiz-options">
-                            <label><input type="radio" name="q3" value="a">True</label>
-                            <label><input type="radio" name="q3" value="b">False</label>
-                        </div>
-                    </div>
-
-                    <div class="quiz-question">
-                        <h3>4. Which code selects an element with data-user="123"?</h3>
-                        <div class="quiz-options">
-                            <label><input type="radio" name="q4" value="a">querySelector('[data-user="123"]')</label>
-                            <label><input type="radio" name="q4" value="b">getElementById('data-user')</label>
-                            <label><input type="radio" name="q4" value="c">getElementsByData('123')</label>
-                        </div>
-                    </div>
-
-                    <div class="quiz-question">
-                        <h3>5. True or False: getElementsByClassName returns a NodeList</h3>
-                        <div class="quiz-options">
-                            <label><input type="radio" name="q5" value="a">True</label>
-                            <label><input type="radio" name="q5" value="b">False</label>
-                        </div>
-                    </div>
-
-                    <div class="quiz-question">
-                        <h3>6. Which method is most efficient for multiple elements?</h3>
-                        <div class="quiz-options">
-                            <label><input type="radio" name="q6" value="a">getElementsByClassName</label>
-                            <label><input type="radio" name="q6" value="b">querySelectorAll</label>
-                            <label><input type="radio" name="q6" value="c">getElementsByTagName</label>
-                        </div>
-                    </div>
-
-                    <div class="quiz-question">
-                        <h3>7. What's the correct way to select #nav .active?</h3>
-                        <div class="quiz-options">
-                            <label><input type="radio" name="q7" value="a">getElementById('nav').getElementsByClassName('active')</label>
-                            <label><input type="radio" name="q7" value="b">querySelector('#nav .active')</label>
-                            <label><input type="radio" name="q7" value="c">getElementsByClassName('active')</label>
-                        </div>
-                    </div>
-
-                    <div class="quiz-question">
-                        <h3>8. True or False: querySelector can use any CSS selector</h3>
-                        <div class="quiz-options">
-                            <label><input type="radio" name="q8" value="a">True</label>
-                            <label><input type="radio" name="q8" value="b">False</label>
-                        </div>
-                    </div>
+                <div class="quiz-grid" data-section-content>
+                    <!-- Quiz questions will be inserted here -->
                 </div>
                 <button type="submit" class="btn">Submit Quiz</button>
             </form>
         </section>
 
         <section id="tasks" class="section">
-            <h2>Tasks</h2>
-            <div class="tasks-container">
-                <div class="task-card difficulty-easy">
-                    <h3>Easy Task</h3>
-                    <div class="task-description">
-                        <h4>Color All Paragraphs</h4>
-                        <ul>
-                            <li>Create a function that changes the text color of all paragraphs in a document</li>
-                            <li>Requirements:</li>
-                            <li>- Function should be named `colorParagraphs`</li>
-                            <li>- Should target all `<p>` elements in the document</li>
-                            <li>- Should change text color to blue</li>
-                            <li>- Should work on any HTML document</li>
-                        </ul>
-                    </div>
-                    <div class="task-hints">
-                        <button class="btn-hint">Show Hint 1 (-2 points)</button>
-                        <div class="hint-content hidden">
-                            Use document.querySelectorAll() to select all paragraphs
-                        </div>
-                        <button class="btn-hint">Show Hint 2 (-2 points)</button>
-                        <div class="hint-content hidden">
-                            Remember that querySelectorAll returns a NodeList, which you can iterate over
-                        </div>
-                        <button class="btn-hint">Show Hint 3 (-2 points)</button>
-                        <div class="hint-content hidden">
-                            Use element.style.color to change the text color
-                        </div>
-                    </div>
-                    <div class="task-submission">
-                        <div class="file-selection">
-                            <input type="file" id="task1-file" class="file-input" accept=".js,.html,.css">
-                            <label for="task1-file" class="btn btn-select">Select File</label>
-                        </div>
-                        <div class="selected-file"></div>
-                        <button class="btn btn-submit hidden">Submit Solution</button>
-                        <button class="btn btn-remove hidden">Remove File</button>
-                        <div class="submission-status"></div>
-                    </div>
-                </div>
-
-                <div class="task-card difficulty-medium">
-                    <h3>Medium Task</h3>
-                    <div class="task-description">
-                        <h4>Toggle Class by Data Attribute</h4>
-                        <ul>
-                            <li>Implement a function that toggles a CSS class on elements based on a data attribute</li>
-                            <li>The function should:</li>
-                            <li>- Accept two parameters: attribute name and class name</li>
-                            <li>- Find all elements with the specified data attribute</li>
-                            <li>- Toggle the specified class on those elements</li>
-                            <li>- Handle cases where elements might not exist</li>
-                        </ul>
-                    </div>
-                    <div class="task-hints">
-                        <button class="btn-hint">Show Hint 1 (-3 points)</button>
-                        <div class="hint-content hidden">
-                            Data attributes can be selected using querySelectorAll with [data-*] syntax
-                        </div>
-                        <button class="btn-hint">Show Hint 2 (-3 points)</button>
-                        <div class="hint-content hidden">
-                            Consider using classList.toggle() for the class manipulation
-                        </div>
-                    </div>
-                    <div class="task-submission">
-                        <div class="file-selection">
-                            <input type="file" id="task2-file" class="file-input" accept=".js,.html,.css">
-                            <label for="task2-file" class="btn btn-select">Select File</label>
-                        </div>
-                        <div class="selected-file"></div>
-                        <button class="btn btn-submit hidden">Submit Solution</button>
-                        <button class="btn btn-remove hidden">Remove File</button>
-                        <div class="submission-status"></div>
-                    </div>
-                </div>
-
-                <div class="task-card difficulty-hard">
-                    <h3>Hard Task</h3>
-                    <div class="task-description">
-                        <h4>Find Deepest Element</h4>
-                        <ul>
-                            <li>Given a DOM tree, find the element that is nested the deepest</li>
-                            <li>Considerations:</li>
-                            <li>- The deepest element might be anywhere in the document</li>
-                            <li>- Multiple elements might have the same depth</li>
-                            <li>- The solution should work efficiently on large documents</li>
-                        </ul>
-                    </div>
-                    <div class="task-hints">
-                        <button class="btn-hint">Show Hint (-5 points)</button>
-                        <div class="hint-content hidden">
-                            Think about using recursion to traverse the DOM tree
-                        </div>
-                    </div>
-                    <div class="task-submission">
-                        <div class="file-selection">
-                            <input type="file" id="task3-file" class="file-input" accept=".js,.html,.css">
-                            <label for="task3-file" class="btn btn-select">Select File</label>
-                        </div>
-                        <div class="selected-file"></div>
-                        <button class="btn btn-submit hidden">Submit Solution</button>
-                        <button class="btn btn-remove hidden">Remove File</button>
-                        <div class="submission-status"></div>
-                    </div>
-                </div>
+            <h2 data-section-title>Tasks</h2>
+            <div class="tasks-container" data-section-content>
+                <!-- Tasks will be inserted here -->
             </div>
         </section>
 
         <section id="resources" class="section resources-section">
-            <h2>Resources</h2>
-            <div class="resources-grid">
-                <div class="resource-card">
-                    <h3>MDN Documentation</h3>
-                    <ul>
-                        <li>
-                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector" target="_blank">
-                                querySelector
-                            </a>
-                            <span class="resource-description">- Learn how to select single elements using CSS selectors</span>
-                        </li>
-                        <li>
-                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll" target="_blank">
-                                querySelectorAll
-                            </a>
-                            <span class="resource-description">- Master selecting multiple elements and working with NodeLists</span>
-                        </li>
-                    </ul>
-                </div>
-                <div class="resource-card">
-                    <h3>Video Tutorials</h3>
-                    <ul>
-                        <li>
-                            <a href="https://www.youtube.com/watch?v=0ik6X4DJqcg" target="_blank">
-                                DOM Selectors Explained
-                            </a>
-                            <span class="resource-description">- 15-minute video covering all selector methods with examples</span>
-                        </li>
-                    </ul>
-                </div>
+            <h2 data-section-title>Resources</h2>
+            <div class="resources-grid" data-section-content>
+                <!-- Resources will be inserted here -->
             </div>
         </section>
     </main>
 
     <script type="module">
-        import tasks from '../assets/data/tasks.js';
-        // We'll handle the tasks data in the next step
+        import sessions from '../assets/data/sessions.js';
+        import { renderSession } from '../assets/scripts/sessionRenderer.js';
+
+        // Get session ID from URL or default to session1
+        const sessionId = 'session1';
+        const sessionData = sessions[sessionId];
+
+        if (sessionData) {
+            renderSession(sessionData);
+        } else {
+            console.error('Session data not found:', sessionId);
+        }
     </script>
     <script src="../assets/scripts/session.js"></script>
 </body>
