@@ -105,18 +105,37 @@
             <div class="tasks-container">
                 <div class="task-card difficulty-easy">
                     <h3>Easy Task</h3>
-                    <p>Create a function that selects all paragraphs in a document and changes their text color to blue.</p>
-                    <div class="task-code">
-                        <pre><code>function colorParagraphs() {
-    // Your code here
-}</code></pre>
+                    <div class="task-description">
+                        <h4>Color All Paragraphs</h4>
+                        <ul>
+                            <li>Create a function that changes the text color of all paragraphs in a document</li>
+                            <li>Requirements:</li>
+                            <li>- Function should be named `colorParagraphs`</li>
+                            <li>- Should target all `<p>` elements in the document</li>
+                            <li>- Should change text color to blue</li>
+                            <li>- Should work on any HTML document</li>
+                        </ul>
+                    </div>
+                    <div class="task-hints">
+                        <button class="btn-hint">Show Hint 1 (-2 points)</button>
+                        <div class="hint-content hidden">
+                            Use document.querySelectorAll() to select all paragraphs
+                        </div>
+                        <button class="btn-hint">Show Hint 2 (-2 points)</button>
+                        <div class="hint-content hidden">
+                            Remember that querySelectorAll returns a NodeList, which you can iterate over
+                        </div>
+                        <button class="btn-hint">Show Hint 3 (-2 points)</button>
+                        <div class="hint-content hidden">
+                            Use element.style.color to change the text color
+                        </div>
                     </div>
                     <div class="task-submission">
                         <div class="file-selection">
                             <input type="file" id="task1-file" class="file-input" accept=".js,.html,.css">
                             <label for="task1-file" class="btn btn-select">Select File</label>
                         </div>
-                        <div class="selected-file hidden"></div>
+                        <div class="selected-file"></div>
                         <button class="btn btn-submit hidden">Submit Solution</button>
                         <button class="btn btn-remove hidden">Remove File</button>
                         <div class="submission-status"></div>
@@ -125,38 +144,63 @@
 
                 <div class="task-card difficulty-medium">
                     <h3>Medium Task</h3>
-                    <p>Create a function that toggles a class on all elements with a specific data attribute.</p>
-                    <div class="task-code">
-                        <pre><code>function toggleClassByDataAttr(attrName, className) {
-    // Your code here
-}</code></pre>
+                    <div class="task-description">
+                        <h4>Toggle Class by Data Attribute</h4>
+                        <ul>
+                            <li>Implement a function that toggles a CSS class on elements based on a data attribute</li>
+                            <li>The function should:</li>
+                            <li>- Accept two parameters: attribute name and class name</li>
+                            <li>- Find all elements with the specified data attribute</li>
+                            <li>- Toggle the specified class on those elements</li>
+                            <li>- Handle cases where elements might not exist</li>
+                        </ul>
+                    </div>
+                    <div class="task-hints">
+                        <button class="btn-hint">Show Hint 1 (-3 points)</button>
+                        <div class="hint-content hidden">
+                            Data attributes can be selected using querySelectorAll with [data-*] syntax
+                        </div>
+                        <button class="btn-hint">Show Hint 2 (-3 points)</button>
+                        <div class="hint-content hidden">
+                            Consider using classList.toggle() for the class manipulation
+                        </div>
                     </div>
                     <div class="task-submission">
                         <div class="file-selection">
                             <input type="file" id="task2-file" class="file-input" accept=".js,.html,.css">
                             <label for="task2-file" class="btn btn-select">Select File</label>
                         </div>
-                        <div class="selected-file hidden"></div>
+                        <div class="selected-file"></div>
                         <button class="btn btn-submit hidden">Submit Solution</button>
                         <button class="btn btn-remove hidden">Remove File</button>
                         <div class="submission-status"></div>
                     </div>
                 </div>
 
-                <div class="task-card difficulty-strong">
-                    <h3>Strong Task</h3>
-                    <p>Implement a function that finds the deepest nested element in the DOM tree.</p>
-                    <div class="task-code">
-                        <pre><code>function findDeepestElement() {
-    // Your code here
-}</code></pre>
+                <div class="task-card difficulty-hard">
+                    <h3>Hard Task</h3>
+                    <div class="task-description">
+                        <h4>Find Deepest Element</h4>
+                        <ul>
+                            <li>Given a DOM tree, find the element that is nested the deepest</li>
+                            <li>Considerations:</li>
+                            <li>- The deepest element might be anywhere in the document</li>
+                            <li>- Multiple elements might have the same depth</li>
+                            <li>- The solution should work efficiently on large documents</li>
+                        </ul>
+                    </div>
+                    <div class="task-hints">
+                        <button class="btn-hint">Show Hint (-5 points)</button>
+                        <div class="hint-content hidden">
+                            Think about using recursion to traverse the DOM tree
+                        </div>
                     </div>
                     <div class="task-submission">
                         <div class="file-selection">
                             <input type="file" id="task3-file" class="file-input" accept=".js,.html,.css">
                             <label for="task3-file" class="btn btn-select">Select File</label>
                         </div>
-                        <div class="selected-file hidden"></div>
+                        <div class="selected-file"></div>
                         <button class="btn btn-submit hidden">Submit Solution</button>
                         <button class="btn btn-remove hidden">Remove File</button>
                         <div class="submission-status"></div>
@@ -166,6 +210,10 @@
         </section>
     </main>
 
+    <script type="module">
+        import tasks from '../assets/data/tasks.js';
+        // We'll handle the tasks data in the next step
+    </script>
     <script src="../assets/scripts/session.js"></script>
 </body>
 </html> 

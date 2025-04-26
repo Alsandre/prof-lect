@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setupQuizForm();
     setupTaskSubmissions();
     setupNavigation();
+    setupHints();
 });
 
 // Setup quiz form submission
@@ -49,6 +50,25 @@ function showQuizFeedback(answers) {
 
     // Show feedback to user
     alert(`Quiz submitted! Your score: ${score}/${Object.keys(answers).length}`);
+}
+
+// Setup hints system
+function setupHints() {
+    document.querySelectorAll('.btn-hint').forEach(button => {
+        button.addEventListener('click', function() {
+            const hintContent = this.nextElementSibling;
+            if (hintContent && hintContent.classList.contains('hint-content')) {
+                hintContent.classList.remove('hidden');
+                this.disabled = true;
+                this.style.opacity = '0.5';
+                this.style.cursor = 'not-allowed';
+                
+                // In the future, this will deduct points from the score
+                const penalty = parseInt(this.textContent.match(/\(-(\d+)/)[1]);
+                console.log(`Hint used: -${penalty} points`);
+            }
+        });
+    });
 }
 
 // Setup task submissions
