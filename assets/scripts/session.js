@@ -53,21 +53,85 @@ function showQuizFeedback(answers) {
 
 // Setup task submissions
 function setupTaskSubmissions() {
-    const taskButtons = document.querySelectorAll('.submit-task');
-    taskButtons.forEach(button => {
-        button.addEventListener('click', (e) => {
-            const taskCard = e.target.closest('.task-card');
-            const difficulty = taskCard.classList.contains('difficulty-easy') ? 'easy' :
-                             taskCard.classList.contains('difficulty-medium') ? 'medium' : 'strong';
-            
-            const code = taskCard.querySelector('code').textContent;
-            
-            // WAITING FOR BACK
-            // This will be replaced with actual backend submission
-            console.log(`Task submitted - Difficulty: ${difficulty}, Code:`, code);
-            
-            // Show submission confirmation
-            alert('Task submitted successfully!');
+    document.querySelectorAll('.task-card').forEach(taskCard => {
+        const fileInput = taskCard.querySelector('.file-input');
+        const fileSelection = taskCard.querySelector('.file-selection');
+        const selectedFileSpan = taskCard.querySelector('.selected-file');
+        const submitBtn = taskCard.querySelector('.btn-submit');
+        const removeBtn = taskCard.querySelector('.btn-remove');
+        const statusDiv = taskCard.querySelector('.submission-status');
+
+        // Handle file selection
+        fileInput.addEventListener('change', function() {
+            if (this.files.length > 0) {
+                const file = this.files[0];
+                selectedFileSpan.textContent = file.name;
+                selectedFileSpan.classList.remove('hidden');
+                fileSelection.classList.add('hidden');
+                submitBtn.classList.remove('hidden');
+                removeBtn.classList.remove('hidden');
+            }
+        });
+
+        // Handle remove file button
+        removeBtn.addEventListener('click', function() {
+            fileInput.value = '';
+            selectedFileSpan.textContent = '';
+            selectedFileSpan.classList.add('hidden');
+            fileSelection.classList.remove('hidden');
+            submitBtn.classList.add('hidden');
+            removeBtn.classList.add('hidden');
+            statusDiv.classList.add('hidden');
+            statusDiv.textContent = '';
+        });
+
+        // Handle submit button
+        submitBtn.addEventListener('click', function() {
+            const file = fileInput.files[0];
+            if (!file) return;
+
+            // Create FormData object
+            const formData = new FormData();
+            formData.append('file', file);
+            formData.append('taskId', taskCard.id);
+
+            statusDiv.className = 'submission-status success';
+
+            // Send file to backend
+            fetch('/api/submit-task', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    statusDiv.textContent = 'Solution submitted successfully!';
+                    statusDiv.classList.remove('hidden');
+                    statusDiv.className = 'submission-status success';
+                    
+                    // Reset the form after successful submission
+                    setTimeout(() => {
+                        fileInput.value = '';
+                        selectedFileSpan.textContent = '';
+                        selectedFileSpan.classList.add('hidden');
+                        fileSelection.classList.remove('hidden');
+                        submitBtn.classList.add('hidden');
+                        removeBtn.classList.add('hidden');
+                        statusDiv.classList.add('hidden');
+                        statusDiv.textContent = '';
+                    }, 3000);
+                } else {
+                    statusDiv.textContent = 'Error submitting solution. Please try again.';
+                    statusDiv.classList.remove('hidden');
+                    statusDiv.className = 'submission-status error';
+                }
+            })
+            .catch(error => {
+                statusDiv.textContent = 'Error submitting solution. Please try again.';
+                statusDiv.classList.remove('hidden');
+                statusDiv.className = 'submission-status error';
+                console.error('Error:', error);
+            });
         });
     });
 }

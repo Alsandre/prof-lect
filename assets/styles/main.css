@@ -4,9 +4,11 @@
     --text-color: #888;
     --light-bg: #f9f9f9;
     --border-color: #dfe2e5;
-    --success-color: #4caf50;
+    --success-color: #499f4c;
+    --success-color-dark: #39783b;
     --warning-color: #ff9800;
-    --danger-color: #f44336;
+    --danger-color: #d4584f;
+    --danger-color-dark: #bb3d34;
     --landing-bg: #f5f7fa;
 }
 
