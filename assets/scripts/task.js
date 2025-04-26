@@ -48,14 +48,39 @@ function setupSubmitForm() {
 
 // Setup editor interactions
 function setupEditor() {
-    // This function will handle any editor-specific interactions
-    // For now, it's a placeholder for future functionality
-    
-    // Example: Listen for messages from the StackBlitz iframe
-    window.addEventListener('message', (event) => {
-        // Handle messages from the editor iframe
-        console.log('Message from editor:', event.data);
+    // Initialize CodeMirror
+    const codeTextarea = document.getElementById('code-editor');
+    if (!codeTextarea) return;
+    const editor = CodeMirror.fromTextArea(codeTextarea, {
+        mode: 'javascript',
+        lineNumbers: true,
+        theme: 'default',
+        indentUnit: 4,
+        tabSize: 4,
+        lineWrapping: true
     });
+    // Set a default template
+    editor.setValue('// Write your JavaScript code here\nconsole.log("Hello, world!");');
+
+    // Run button handler
+    const runBtn = document.getElementById('run-code');
+    const outputFrame = document.getElementById('output-frame');
+    if (runBtn && outputFrame) {
+        runBtn.addEventListener('click', () => {
+            const userCode = editor.getValue();
+            // Sandbox the code in the iframe
+            const html = `<!DOCTYPE html><html><body><script>try{${userCode}}catch(e){document.body.innerHTML='<pre style=\'color:red\'>'+e+'</pre>';}</script></body></html>`;
+            outputFrame.srcdoc = html;
+        });
+    }
+
+    // Optional: update the submit form textarea with editor content
+    const submitForm = document.getElementById('submit-form');
+    if (submitForm) {
+        submitForm.addEventListener('submit', () => {
+            document.getElementById('code').value = editor.getValue();
+        });
+    }
 }
 
 // Helper function to get task parameters from URL
