@@ -2,5 +2,23 @@
     "name": "javascript-module",
     "author": "@alsandre",
     "version": "0.0.1",
-    "type": "module"
-  }
+    "type": "module",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Alsandre/prof-lect.git"
+    },
+    "keywords": [],
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Alsandre/prof-lect/issues"
+    },
+    "homepage": "https://github.com/Alsandre/prof-lect#readme",
+    "description": "",
+    "dependencies": {
+        "@supabase/supabase-js": "^2.49.4"
+    }
+}
