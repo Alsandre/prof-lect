@@ -1,5 +1,19 @@
 {
   "version": 2,
+  "rewrites": [
+    {
+      "source": "/profile.html",
+      "destination": "/profile.html"
+    },
+    {
+      "source": "/pages/:path*",
+      "destination": "/pages/:path*"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ],
   "headers": [
     {
       "source": "/(.*).js",
@@ -18,20 +32,6 @@
           "value": "application/javascript"
         }
       ]
-    }
-  ],
-  "routes": [
-    {
-      "src": "/profile.html",
-      "dest": "/profile.html"
-    },
-    {
-      "src": "/pages/(.*)",
-      "dest": "/pages/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
     }
   ]
 } 
