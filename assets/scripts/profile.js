@@ -1,25 +1,10 @@
+import { setupSmoothNavigation } from './helpers/navigation.js';
+
 document.addEventListener('DOMContentLoaded', () => {
-    setupNavigation();
+    setupSmoothNavigation('.profile-nav a');
     initializeProfile();
     setupProgressChart();
 });
-
-// Setup smooth navigation
-function setupNavigation() {
-    const navLinks = document.querySelectorAll('.main-nav a');
-    navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            if (link.getAttribute('href').startsWith('#')) {
-                e.preventDefault();
-                const targetId = link.getAttribute('href').substring(1);
-                const targetSection = document.getElementById(targetId);
-                if (targetSection) {
-                    targetSection.scrollIntoView({ behavior: 'smooth' });
-                }
-            }
-        });
-    });
-}
 
 // Initialize profile data
 function initializeProfile() {

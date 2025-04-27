@@ -1,9 +1,10 @@
 import { sessions } from '../data/sessions.js';
+import { setupSmoothNavigation } from './helpers/navigation.js';
 
 // Initialize the application
 document.addEventListener('DOMContentLoaded', () => {
     loadSessions();
-    setupNavigation();
+    setupSmoothNavigation('.main-nav a');
     initializeProfile();
 });
 
@@ -29,21 +30,6 @@ function createSessionCard(session) {
         <a href="sessions/${session.id}.html" class="btn">View Session</a>
     `;
     return card;
-}
-
-// Setup smooth navigation
-function setupNavigation() {
-    const navLinks = document.querySelectorAll('.main-nav a');
-    navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const targetId = link.getAttribute('href').substring(1);
-            const targetSection = document.getElementById(targetId);
-            if (targetSection) {
-                targetSection.scrollIntoView({ behavior: 'smooth' });
-            }
-        });
-    });
 }
 
 // Initialize student profile

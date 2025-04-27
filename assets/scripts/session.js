@@ -1,7 +1,9 @@
+import { setupSmoothNavigation } from './helpers/navigation.js';
+
 document.addEventListener('DOMContentLoaded', () => {
     setupQuizForm();
     setupTaskSubmissions();
-    setupNavigation();
+    setupSmoothNavigation('.session-nav a');
     setupHints();
 });
 
@@ -183,24 +185,6 @@ function setupTaskSubmissions() {
                 statusDiv.className = 'submission-status error';
                 console.error('Error:', error);
             });
-        });
-    });
-}
-
-// Setup smooth navigation
-function setupNavigation() {
-    const navLinks = document.querySelectorAll('.session-nav a');
-    navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            const href = link.getAttribute('href');
-            if (href.startsWith('#')) {
-                e.preventDefault();
-                const targetId = href.substring(1);
-                const targetSection = document.getElementById(targetId);
-                if (targetSection) {
-                    targetSection.scrollIntoView({ behavior: 'smooth' });
-                }
-            }
         });
     });
 } 
