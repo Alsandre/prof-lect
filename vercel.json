@@ -32,6 +32,15 @@
           "value": "application/javascript"
         }
       ]
+    },
+    {
+      "source": "/data/(.*)",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/javascript"
+        }
+      ]
     }
   ]
 } 

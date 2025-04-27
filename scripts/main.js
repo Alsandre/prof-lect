@@ -87,14 +87,17 @@ if (currentPath.includes('profile.html')) {
     console.log(currentPath);
     // For session pages, we also need to load the specific session data
     const sessionId = currentPath.split('/').pop().replace('.html', '') || 'session1';
-    import(`/data/${sessionId}.js`)
+    import(`../data/${sessionId}.js`)
         .then(module => {
-            console.log(module);
+            console.log('Session module loaded:', module);
             if (module.default) {
                 renderSession(module.default);
+            } else {
+                console.error('Session module does not have a default export');
             }
         })
         .catch(error => {
             console.error('Failed to load session data:', error);
+            // You might want to show a user-friendly error message here
         });
 } 
