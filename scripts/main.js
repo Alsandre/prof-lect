@@ -1,9 +1,11 @@
 import { sessions } from '../data/sessions.js';
+import { setupSmoothNavigation } from './helpers/navigation.js';
+import { renderSession } from './sessionRenderer.js';
 
 // Initialize the application
 document.addEventListener('DOMContentLoaded', () => {
     loadSessions();
-    setupNavigation();
+    setupSmoothNavigation('.main-nav a');
     initializeProfile();
 });
 
@@ -26,24 +28,9 @@ function createSessionCard(session) {
         <h3>Week ${session.week} - Session ${session.session}</h3>
         <h4>${session.title}</h4>
         <p>${session.summary}</p>
-        <a href="sessions/${session.id}.html" class="btn">View Session</a>
+        <a href="/pages/${session.id}.html" class="btn">View Session</a>
     `;
     return card;
-}
-
-// Setup smooth navigation
-function setupNavigation() {
-    const navLinks = document.querySelectorAll('.main-nav a');
-    navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const targetId = link.getAttribute('href').substring(1);
-            const targetSection = document.getElementById(targetId);
-            if (targetSection) {
-                targetSection.scrollIntoView({ behavior: 'smooth' });
-            }
-        });
-    });
 }
 
 // Initialize student profile
@@ -86,4 +73,28 @@ function updateProgressDisplay() {
             <p>0/45</p>
         </div>
     `;
+}
+
+// Main entry point for the application
+// Get the current page path
+const currentPath = window.location.pathname;
+
+// Initialize page-specific functionality
+if (currentPath.includes('profile.html')) {
+    initProfile();
+} else if (currentPath.includes('session')) {
+    loadSessions();
+    console.log(currentPath);
+    // For session pages, we also need to load the specific session data
+    const sessionId = currentPath.split('/').pop().replace('.html', '') || 'session1';
+    import(`/data/${sessionId}.js`)
+        .then(module => {
+            console.log(module);
+            if (module.default) {
+                renderSession(module.default);
+            }
+        })
+        .catch(error => {
+            console.error('Failed to load session data:', error);
+        });
 } 

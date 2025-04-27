@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-session-title>Session Title</title>
-    <link rel="stylesheet" href="../assets/styles/main.css">
-    <link rel="stylesheet" href="../assets/styles/session.css">
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/session.css">
 </head>
 <body>
     <header class="session-header">
@@ -62,16 +62,7 @@
         </section>
     </main>
 
-    <script type="module">
-        import session1 from '../assets/data/session1.js';
-        import { renderSession } from '../assets/scripts/sessionRenderer.js';
-
-        if (session1) {
-            renderSession(session1);
-        } else {
-            console.error('Session data not found:', sessionId);
-        }
-    </script>
-    <script src="../assets/scripts/session.js"></script>
+    <script type="module" src="/scripts/main.js"></script>
+    <script type="module" src="/scripts/session.js"></script>
 </body>
 </html> 
