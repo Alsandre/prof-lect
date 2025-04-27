@@ -1,7 +1,5 @@
-import { sessions } from '../public/assets/data/sessions.js';
+import { sessions } from '../data/sessions.js';
 import { setupSmoothNavigation } from './helpers/navigation.js';
-import { initProfile } from './profile.js';
-import { initSession } from './session.js';
 import { renderSession } from './sessionRenderer.js';
 
 // Initialize the application
@@ -30,7 +28,7 @@ function createSessionCard(session) {
         <h3>Week ${session.week} - Session ${session.session}</h3>
         <h4>${session.title}</h4>
         <p>${session.summary}</p>
-        <a href="sessions/${session.id}.html" class="btn">View Session</a>
+        <a href="/pages/${session.id}.html" class="btn">View Session</a>
     `;
     return card;
 }
@@ -85,11 +83,13 @@ const currentPath = window.location.pathname;
 if (currentPath.includes('profile.html')) {
     initProfile();
 } else if (currentPath.includes('session')) {
-    initSession();
+    loadSessions();
+    console.log(currentPath);
     // For session pages, we also need to load the specific session data
     const sessionId = currentPath.split('/').pop().replace('.html', '') || 'session1';
-    import(`../public/assets/data/${sessionId}.js`)
+    import(`/data/${sessionId}.js`)
         .then(module => {
+            console.log(module);
             if (module.default) {
                 renderSession(module.default);
             }
