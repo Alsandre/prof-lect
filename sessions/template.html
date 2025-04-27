@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-session-title>Session Title</title>
-    <link rel="stylesheet" href="../assets/styles/main.css">
-    <link rel="stylesheet" href="../assets/styles/session.css">
+    <link rel="stylesheet" href="/assets/styles/main.css">
+    <link rel="stylesheet" href="/assets/styles/session.css">
 </head>
 <body>
     <header class="session-header">
@@ -63,8 +63,8 @@
     </main>
 
     <script type="module">
-        import sessions from '../assets/data/sessions.js';
-        import { renderSession } from '../js/sessionRenderer.js';
+        import { sessions } from '/assets/data/sessions.js';
+        import { renderSession } from '/js/sessionRenderer.js';
 
         // Get session ID from URL or default to session1
         const sessionId = window.location.pathname.split('/').pop().replace('.html', '') || 'session1';
@@ -76,6 +76,6 @@
             console.error('Session data not found:', sessionId);
         }
     </script>
-    <script src="../assets/scripts/session.js"></script>
+    <script src="/js/session.js" type="module"></script>
 </body>
 </html> 
