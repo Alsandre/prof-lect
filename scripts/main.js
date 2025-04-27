@@ -89,8 +89,8 @@ if (currentPath.includes('profile.html')) {
     const sessionId = currentPath.split('/').pop().replace('.html', '') || 'session1';
     import(`../data/${sessionId}.js`)
         .then(module => {
-            console.log('Session module loaded:', module);
             if (module.default) {
+                console.log(currentPath);
                 renderSession(module.default);
             } else {
                 console.error('Session module does not have a default export');
