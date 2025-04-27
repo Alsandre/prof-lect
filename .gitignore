@@ -1,5 +1,5 @@
 # Dependencies
-node_modules/
+/node_modules
 
 # Environment variables
 .env
@@ -15,3 +15,16 @@ Thumbs.db
 # Logs
 *.log 
 .vercel
+
+# production
+/dist
+
+# misc
+*.local
+
+# local env files
+.env.local
+.env.*.local
+
+# Don't ignore public directory
+# /public
