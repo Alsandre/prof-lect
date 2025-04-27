@@ -25,5 +25,9 @@ export default defineConfig({
       '@': resolve(__dirname, './js'),
       '@assets': resolve(__dirname, './public/assets')
     }
-  }
+  },
+  optimizeDeps: {
+    include: ['@/main.js']
+  },
+  assetsInclude: ['**/*.js']
 }) 

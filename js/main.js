@@ -1,5 +1,8 @@
-import { sessions } from '../assets/data/sessions.js';
+import { sessions } from '../public/assets/data/sessions.js';
 import { setupSmoothNavigation } from './helpers/navigation.js';
+import { initProfile } from './profile.js';
+import { initSession } from './session.js';
+import { renderSession } from './sessionRenderer.js';
 
 // Initialize the application
 document.addEventListener('DOMContentLoaded', () => {
@@ -72,4 +75,26 @@ function updateProgressDisplay() {
             <p>0/45</p>
         </div>
     `;
+}
+
+// Main entry point for the application
+// Get the current page path
+const currentPath = window.location.pathname;
+
+// Initialize page-specific functionality
+if (currentPath.includes('profile.html')) {
+    initProfile();
+} else if (currentPath.includes('session')) {
+    initSession();
+    // For session pages, we also need to load the specific session data
+    const sessionId = currentPath.split('/').pop().replace('.html', '') || 'session1';
+    import(`../public/assets/data/${sessionId}.js`)
+        .then(module => {
+            if (module.default) {
+                renderSession(module.default);
+            }
+        })
+        .catch(error => {
+            console.error('Failed to load session data:', error);
+        });
 } 
