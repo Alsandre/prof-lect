@@ -64,7 +64,7 @@
 
     <script type="module">
         import session1 from '../assets/data/session1.js';
-        import { renderSession } from '../assets/scripts/sessionRenderer.js';
+        import { renderSession } from '../js/sessionRenderer.js';
 
         if (session1) {
             renderSession(session1);
@@ -72,6 +72,6 @@
             console.error('Session data not found:', sessionId);
         }
     </script>
-    <script src="../assets/scripts/session.js"></script>
+    <script src="../js/session.js" type="module"></script>
 </body>
 </html> 

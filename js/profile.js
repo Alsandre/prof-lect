@@ -1,5 +1,5 @@
 import { setupSmoothNavigation } from './helpers/navigation.js';
-import { userData } from '../data/userData.js';
+import { userData } from '../assets/data/userData.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     setupSmoothNavigation('.profile-nav a');

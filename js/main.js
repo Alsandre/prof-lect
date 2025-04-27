@@ -1,4 +1,4 @@
-import { sessions } from '../data/sessions.js';
+import { sessions } from '../assets/data/sessions.js';
 import { setupSmoothNavigation } from './helpers/navigation.js';
 
 // Initialize the application
