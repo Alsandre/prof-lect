@@ -1,29 +1,4 @@
-// Session data structure
-const sessions = [
-    {
-        id: 'session1',
-        title: 'DOM Selectors & Inspection',
-        week: 1,
-        session: 1,
-        summary: 'Learn about DOM selectors and how to inspect elements effectively.',
-        learningGoals: [
-            'Select any element(s) efficiently with native DOM APIs',
-            'Explain difference between NodeList & HTMLCollection'
-        ]
-    },
-    // More sessions will be added here
-];
-
-// Student profile data structure
-const studentProfile = {
-    name: '',
-    email: '',
-    progress: {
-        completedSessions: [],
-        quizScores: {},
-        taskCompletions: {}
-    }
-};
+import { sessions } from '../data/sessions.js';
 
 // Initialize the application
 document.addEventListener('DOMContentLoaded', () => {

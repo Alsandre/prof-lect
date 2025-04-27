@@ -63,15 +63,11 @@
     </main>
 
     <script type="module">
-        import sessions from '../assets/data/sessions.js';
+        import session1 from '../assets/data/session1.js';
         import { renderSession } from '../assets/scripts/sessionRenderer.js';
 
-        // Get session ID from URL or default to session1
-        const sessionId = 'session1';
-        const sessionData = sessions[sessionId];
-
-        if (sessionData) {
-            renderSession(sessionData);
+        if (session1) {
+            renderSession(session1);
         } else {
             console.error('Session data not found:', sessionId);
         }
